@@ -1,47 +1,162 @@
+/* General Styling */
 body {
-    font-family: sans-serif;
+    font-family: 'Arial', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #f4f4f4;
+    background-color: #e9ecef;
+    background-image: url("background.webp");
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    background-size: cover;
+    overflow-y: hidden;
 }
+
 .container {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0); /* Translucent white background */
+    backdrop-filter: blur(10px); /* Glassmorphism blur effect */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
     padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37); /* Increased shadow */
     text-align: center;
+    max-width: 750px;
+    width: 100%;
+    
 }
+
+h1 {
+    color: #500707;
+    margin-bottom: 20px;
+}
+
+/* Form Styling - Grid Layout */
+form {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    grid-gap: 15px; /* Space between items */
+    width: 100%;
+    align-items: center;
+    justify-items: center;
+}
+
 label {
     display: block;
     margin-bottom: 5px;
-    font-weight: bold;
-}
-input[type="number"] {
+    font-weight: 600;
+    text-align: left;
     width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+    color: rgb(0, 0, 0); /* Make label color white */
 }
-button {
-    background-color: #007bff;
+
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5); /* Darker input fields */
     color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.5); 
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    /* background-color: rgba(39, 12, 12, 0.3);  */
+}
+
+input[type="number"]:focus,
+select:focus {
+    outline: none;
+    border-color: #5a0000;
+}
+
+/* Origin select input */
+.origin {
+    grid-column: span 4; /* make it span across 4 columns*/
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>"); /* make the arrow white*/
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: 50%;
+    background-color: rgba(117, 29, 29, 0.3); /* Light input background*/
+    color: rgb(255, 255, 255);
     cursor: pointer;
 }
+
+/* submit button */
+button {
+    grid-column: span 4; /* make it span across 4 columns*/
+    background: linear-gradient(90deg, #ff4b2b, #ff416c);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    color: rgb(0, 0, 0);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
 button:hover {
-    background-color: #0056b3;
+    /* background-color: #083814; */
+    transform: scale(1.05);
 }
+
+/* Result Styling */
 #result {
-    margin-top: 20px;
+    grid-column: span 4;
+    margin-top: 25px;
     font-weight: bold;
+    font-size: 18px;
+    color: white;
 }
+
 .error {
-    color: red;
+    color: #dc3545;
+}
+
+/* Media Queries (Responsiveness) */
+@media (max-width: 768px) {
+    form {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+    }
+
+    .origin {
+        grid-column: span 2;
+    }
+
+    button {
+        grid-column: span 2;
+    }
+
+    #result {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 500px) {
+    form {
+        grid-template-columns: 1fr; /* 1 column on small screens */
+    }
+
+    .origin {
+        grid-column: span 1;
+    }
+
+    button {
+        grid-column: span 1;
+    }
+
+    #result {
+        grid-column: span 1;
+    }
 }
