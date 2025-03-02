@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Mileage Predictor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Car Mileage Predictor</h1>
+        <form id="mileageForm">
+            <label for="cylinders">Cylinders:</label>
+            <input type="number" id="cylinders" name="cylinders" required>
+
+            <label for="displacement">Displacement:</label>
+            <input type="number" id="displacement" name="displacement" required>
+
+            <label for="horsepower">Horsepower:</label>
+            <input type="number" id="horsepower" name="horsepower" required>
+
+            <label for="weight">Weight:</label>
+            <input type="number" id="weight" name="weight" required>
+
+            <label for="acceleration">Acceleration:</label>
+            <input type="number" id="acceleration" name="acceleration" required>
+
+            <label for="model_year">Model Year:</label>
+            <input type="number" id="model_year" name="model_year" required>
+
+            <label for="origin">Origin:</label>
+            <select id="origin" name="origin">
+                <option value="usa">USA</option>
+                <option value="europe">Europe</option>
+                <option value="japan">Japan</option>
+            </select>
+            
+            <input type="hidden" id="origin_2" name="origin_2" value="0">
+            <input type="hidden" id="origin_3" name="origin_3" value="0">
+            <br>
+            <br>
+            <br>
+
+            <button type="submit">Predict Mileage</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('origin').addEventListener('change', function() {
+            const selectedOrigin = this.value;
+            let origin_2_value = 0;
+            let origin_3_value = 0;
+
+            if (selectedOrigin === 'europe') {
+                origin_2_value = 1;
+            } else if (selectedOrigin === 'japan') {
+                origin_3_value = 1;
+            }
+
+            document.getElementById('origin_2').value = origin_2_value;
+            document.getElementById('origin_3').value = origin_3_value;
+        });
+    </script>
+</body>
+</html>
